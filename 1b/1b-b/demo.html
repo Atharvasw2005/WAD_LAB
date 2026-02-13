@@ -1,0 +1,78 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('regForm');
+    const otherHobby = document.getElementById('otherHobby');
+    const otherDiv = document.getElementById('otherDiv');
+
+
+    if (otherHobby) {
+        otherHobby.addEventListener('change', () => {
+            otherDiv.style.display = otherHobby.checked ? "block" : "none";
+        });
+    }
+
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (validateForm()) {
+                saveAndRedirect();
+            }
+        });
+    }
+});
+
+function validateForm() {
+    let valid = true;
+    document.querySelectorAll(".error").forEach(e => e.innerHTML = "");
+
+    const name = document.getElementById("name").value.trim();
+    const mobile = document.getElementById("mobile_no").value.trim();
+    const email = document.getElementById("email_id").value.trim();
+    const password = document.getElementById("password").value;
+    const address = document.getElementById("address").value.trim();
+    const city = document.getElementById("city").value;
+    const gender = document.querySelector('input[name="gender"]:checked');
+    const date = document.getElementById("#passwordErr").value;
+
+    
+    const checkboxes = document.querySelectorAll('.hobby input[type="checkbox"]');
+    const isOneChecked = Array.from(checkboxes).some(cb => cb.checked);
+
+    if (name === "") { document.getElementById("nameErr").innerHTML = "Required"; valid = false; }
+    if (!/^[7-9]{10}$/.test(mobile)) { document.getElementById("mobileErr").innerHTML = "10 digits only"; valid = false; }
+    if (email === "") { document.getElementById("emailErr").innerHTML = "Required"; valid = false; }
+    if (password.length < 6) { document.getElementById("passwordErr").innerHTML = "Min 6 chars"; valid = false; }
+    if (address === "") { document.getElementById("addressErr").innerHTML = "Required"; valid = false; }
+    if (city === "") { document.getElementById("cityErr").innerHTML = "Select city"; valid = false; }
+    if (!gender) { document.getElementById("genderErr").innerHTML = "Select gender"; valid = false; }
+    if(!date) {document.getElementById("dateErr").innerHTML = "Select Date"; valid = false;}
+    
+    if (!isOneChecked) { 
+        document.getElementById("hobbyErr").innerHTML = "Select at least one hobby"; 
+        valid = false; 
+    }
+
+    return valid;
+}
+
+function saveAndRedirect() {
+    let hobbies = [];
+    document.querySelectorAll('.hobby-check:checked').forEach(cb => hobbies.push(cb.value));
+    
+    if (document.getElementById('otherHobby').checked) {
+        let otherVal = document.getElementById('otherText').value.trim();
+        hobbies.push(otherVal ? otherVal : "Other");
+    }
+
+    const userData = {
+        "Name": document.getElementById("name").value,
+        "Mobile": document.getElementById("mobile_no").value,
+        "Email": document.getElementById("email_id").value,
+        "Address": document.getElementById("address").value,
+        "City": document.getElementById("city").value,
+        "Gender": document.querySelector('input[name="gender"]:checked').value,
+        "Hobbies": hobbies.join(", ")
+    };
+
+    localStorage.setItem("userSubmission", JSON.stringify(userData));
+    window.location.href = "display.html";
+}

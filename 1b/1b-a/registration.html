@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <h1>Student Registration Form</h1>
+                <p>Please fill out all the required fields</p>
+            </div>
+            
+            <form id="registrationForm" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter first name">
+                        <span class="error-message" id="firstNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Enter last name">
+                        <span class="error-message" id="lastNameError"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="Enter email address">
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter phone number">
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dob">Date of Birth <span class="required">*</span></label>
+                        <input type="date" id="dob" name="dob">
+                        <span class="error-message" id="dobError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gender <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="Male">
+                                <span>Male</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="Female">
+                                <span>Female</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="Other">
+                                <span>Other</span>
+                            </label>
+                        </div>
+                        <span class="error-message" id="genderError"></span>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="address">Address <span class="required">*</span></label>
+                    <textarea id="address" name="address" rows="2" placeholder="Enter complete address"></textarea>
+                    <span class="error-message" id="addressError"></span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City <span class="required">*</span></label>
+                        <input type="text" id="city" name="city" placeholder="Enter city">
+                        <span class="error-message" id="cityError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state">State <span class="required">*</span></label>
+                        <select id="state" name="state">
+                            <option value="">Select State</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        </select>
+                        <span class="error-message" id="stateError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pincode">Pincode <span class="required">*</span></label>
+                        <input type="text" id="pincode" name="pincode" placeholder="Enter pincode" maxlength="6">
+                        <span class="error-message" id="pincodeError"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="course">Course <span class="required">*</span></label>
+                        <select id="course" name="course">
+                            <option value="">Select Course</option>
+                            <option value="B.Tech">B.Tech</option>
+                            <option value="M.Tech">M.Tech</option>
+                            <option value="BCA">BCA</option>
+                            <option value="MCA">MCA</option>
+                            <option value="BSc">BSc</option>
+                            <option value="MSc">MSc</option>
+                        </select>
+                        <span class="error-message" id="courseError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="semester">Semester <span class="required">*</span></label>
+                        <select id="semester" name="semester">
+                            <option value="">Select Semester</option>
+                            <option value="1">1st Semester</option>
+                            <option value="2">2nd Semester</option>
+                            <option value="3">3rd Semester</option>
+                            <option value="4">4th Semester</option>
+                            <option value="5">5th Semester</option>
+                            <option value="6">6th Semester</option>
+                            <option value="7">7th Semester</option>
+                            <option value="8">8th Semester</option>
+                        </select>
+                        <span class="error-message" id="semesterError"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Username <span class="required">*</span></label>
+                        <input type="text" id="username" name="username" placeholder="Choose username">
+                        <span class="error-message" id="usernameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password <span class="required">*</span></label>
+                        <input type="password" id="password" name="password" placeholder="Create password">
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password">
+                        <span class="error-message" id="confirmPasswordError"></span>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms" name="terms">
+                        <span>I agree to the Terms and Conditions <span class="required">*</span></span>
+                    </label>
+                    <span class="error-message" id="termsError"></span>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="submit-btn">Register</button>
+                    <button type="reset" class="reset-btn">Reset</button>
+                    <button type="button" class="view-btn" onclick="window.location.href='display.html'">View Registered Students</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
